@@ -1,0 +1,3 @@
+dommel_lats_homepage:
+    path:     /
+    defaults: { _controller: DommelLatsBundle:Default:index }

@@ -1,0 +1,4 @@
+dommel_lats:
+    resource: "@DommelLatsBundle/Resources/config/routing.yml"
+    prefix:   /
+
