@@ -9,7 +9,7 @@ dommel_lats_sensor_listing:
     methods:  [GET]
 
 dommel_lats_sensor_data:
-    path:     /sensor/{name}
+    path:     /sensors/{name}
     defaults: { _controller: DommelLatsBundle:Sensor:getSensor }
     methods:  [GET]
 
