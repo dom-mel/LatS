@@ -13,7 +13,6 @@ class Config {
         if (self::$config === null) {
             $parser = new Parser();
             self::$config = $parser->parse(file_get_contents(__DIR__ . '/../../../../app/config/sensors.yml'));
-            var_dump(self::$config);
         }
         return self::$config;
     }
