@@ -14,7 +14,12 @@ class LiveSensorController extends FOSRestController {
     {
         $value = $this->executeSensor($name);
         
-        $sensorPoints[] = $value->asArray();
+        $sensorPoints = array();
+        
+        if ($value instanceof SensorValueEntity) {
+            $sensorPoints[] = $value->asArray();
+            
+        }
 
         $view = $this->view($sensorPoints);
         return $this->handleView($view);
@@ -24,17 +29,22 @@ class LiveSensorController extends FOSRestController {
     {
         $sensor = Config::getConfigByName($sensorName);
 
-        try {
-            $value = $this->getValue($sensorName, $sensor);
-            $val = new SensorValueEntity();
-            $val->setSensor($sensorName);
-            $val->setDate($value->getDate());
-            $val->setValue($value->getValue());
+        if (!empty($sensor)) {
             
-            return $val;
-        } catch (\Exception $e) {
-            return null;
+            try {
+                $value = $this->getValue($sensorName, $sensor);
+                $val = new SensorValueEntity();
+                $val->setSensor($sensorName);
+                $val->setDate($value->getDate());
+                $val->setValue($value->getValue());
+
+                return $val;
+                
+            } catch (\Exception $e) {
+                
+            }
         }
+        return null;
     }
 
     private function getValue($sensorName, $sensor)
