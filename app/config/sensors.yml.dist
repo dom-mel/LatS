@@ -8,3 +8,22 @@
         password: null
         query: 'SELECT RAND()'
     display: ~
+
+# Example configuration of a DiskSpace sensor
+# format: kB, MB, GB
+'DiskSpace':
+    class: Dommel\LatsBundle\Sensors\DiskSpace
+    config:
+        dir: '/'
+        format: 'GB'  
+    display: ~
+
+# Example configuration of a Solr sensor
+# not yet implemented! subject to change
+'Solr':
+    class: Dommel\LatsBundle\Sensors\Solr
+    config:
+        host: 'http://myHost'
+        core: 'test'
+        query: '*:*'
+    display: ~
