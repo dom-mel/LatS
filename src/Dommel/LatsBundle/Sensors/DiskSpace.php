@@ -19,7 +19,7 @@ class DiskSpace implements Sensor {
     {
         $result = disk_total_space( $config['dir'] );
         
-        return new SensedValue($result, SensedValue::TYPE_INT);
+        return new SensedValue($result, SensedValue::TYPE_FLOAT);
     }
 
 }
