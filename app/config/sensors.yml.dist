@@ -1,0 +1,10 @@
+
+# Example configuration of a pdo sensor
+'UniqueSensorName':
+    class: Dommel\LatsBundle\Sensors\PDO
+    config:
+        dsn: 'mysql:host=localhost;dbname=test'
+        user: root
+        password: null
+        query: 'SELECT RAND()'
+    display: ~
