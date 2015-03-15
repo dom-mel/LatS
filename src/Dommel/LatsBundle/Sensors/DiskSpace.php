@@ -17,7 +17,21 @@ class DiskSpace implements Sensor {
      */
     public function getValue(array $config)
     {
-        $result = disk_total_space( $config['dir'] );
+        $result = disk_free_space( $config['dir'] );
+        
+        if (isset($config['format'])) {
+            switch ($config['format']) {
+                case 'kB' :
+                    $result = $result / 1024 ;
+                    break;
+                case 'MB' : 
+                    $result = $result / (1024 * 1024);
+                    break;
+                case 'GB' : 
+                    $result = $result / (1024 * 1024 * 1024);
+                    break;
+            }
+        }
         
         return new SensedValue($result, SensedValue::TYPE_FLOAT);
     }
