@@ -105,5 +105,13 @@ class SensorValueEntity {
         $this->value = $value;
     }
 
+    public function asArray()
+    {
+        return array(
+            'sensor' => $this->getSensor(),
+            'date' => $this->getDate()->getTimestamp(),
+            'value' => $this->getValue()
+        );
+    }
 
 }

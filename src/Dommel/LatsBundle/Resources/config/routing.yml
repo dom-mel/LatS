@@ -1,3 +1,14 @@
 dommel_lats_homepage:
     path:     /
     defaults: { _controller: DommelLatsBundle:Default:index }
+    methods:  [GET]
+
+dommel_lats_sensor_listing:
+    path:     /sensors
+    defaults: { _controller: DommelLatsBundle:Sensor:getSensors }
+    methods:  [GET]
+
+dommel_lats_sensor_data:
+    path:     /sensor/{name}
+    defaults: { _controller: DommelLatsBundle:Sensor:getSensor }
+    methods:  [GET]
