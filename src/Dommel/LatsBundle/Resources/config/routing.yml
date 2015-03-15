@@ -13,7 +13,7 @@ dommel_lats_sensor_data:
     defaults: { _controller: DommelLatsBundle:Sensor:getSensor }
     methods:  [GET]
 
-dommel_lats_sensor_data:
+dommel_lats_livesensor_data:
     path:     /livesensor/{name}
     defaults: { _controller: DommelLatsBundle:LiveSensor:getSensor }
     methods:  [GET]
