@@ -18,12 +18,13 @@
         format: 'GB'  
     display: ~
 
-# Example configuration for a sensor without further config
+# stat: user, sys, nice, idle
 'CPU':
     class: Dommel\LatsBundle\Sensors\CPU
     config: 
-        void: 
+        stat: 'user'  
     display: ~
+
 
 # Example configuration of a Solr sensor
 # not yet implemented! subject to change
