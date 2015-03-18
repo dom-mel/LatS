@@ -4,16 +4,16 @@ dommel_lats_homepage:
     methods:  [GET]
 
 dommel_lats_sensor_listing:
-    path:     /sensors
+    path:     /v1/sensors
     defaults: { _controller: DommelLatsBundle:Sensor:getSensors }
     methods:  [GET]
 
 dommel_lats_sensor_data:
-    path:     /sensors/{name}
+    path:     /v1/sensors/{name}
     defaults: { _controller: DommelLatsBundle:Sensor:getSensor }
     methods:  [GET]
 
 dommel_lats_livesensor_data:
-    path:     /livesensors/{name}
+    path:     /v1/livesensors/{name}
     defaults: { _controller: DommelLatsBundle:LiveSensor:getSensor }
     methods:  [GET]
