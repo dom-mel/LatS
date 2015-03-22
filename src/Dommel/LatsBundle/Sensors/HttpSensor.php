@@ -40,6 +40,30 @@ class HttpSensor implements Sensor {
     {
         $result = 0;
         
+        switch ($config['format']) {
+            
+            case 'json':
+                $result = $this->parseJsonData($config);
+                break;
+            
+            case 'xml':
+                $result = $this->parseXmlData($config);
+                break;
+        }
+        
+        
+        return new SensedValue($result, SensedValue::TYPE_FLOAT);
+    }
+    
+    /**
+     * 
+     * @param array $config
+     * @return float 
+     */
+    private function parseJsonData(array $config)
+    {
+        $result = 0;
+        
         $json = json_decode(file_get_contents($config['url']), true);
 
         $store = new JsonStore($json);
@@ -50,6 +74,22 @@ class HttpSensor implements Sensor {
             $result = $res[0];
         }
         
-        return new SensedValue($result, SensedValue::TYPE_FLOAT);
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param array $config
+     * @return float
+     */
+    private function parseXmlData(array $config)
+    {
+        $result = 0;
+        
+        $xml = new SimpleXMLElement(file_get_contents($config['url']));
+        
+        $result = $xml->xpath($config['path']);
+        
+        return $result;
     }
 }
